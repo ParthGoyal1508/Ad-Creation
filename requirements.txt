@@ -1,0 +1,23 @@
+# Capstone Project CS[03] - Advertisement Creator using Image Generation
+# Install all dependencies with: pip install -r requirements.txt
+
+# HTTP requests for HuggingFace Inference API calls (LLM 1 + LLM 2)
+requests>=2.31.0
+
+# HuggingFace InferenceClient - handles text generation and image generation
+# Pinned <0.27.0 because HfFolder was removed in 0.27+ but Gradio 4.x oauth.py still needs it
+huggingface_hub>=0.22.0,<0.27.0
+
+# Image processing: open/save/composite/draw advertisement images
+Pillow>=10.0.0
+
+# PDF report generation
+fpdf2>=2.7.0
+
+# Gradio 4.44.0 — stable, battle-tested on HF Spaces, avoids Gradio 5 regression bugs:
+#   - gradio_client bool schema TypeError in json_schema_to_python_type
+#   - ssr_mode localhost accessibility crash
+gradio==4.44.0
+
+# Python 3.13 compatibility fix: audioop was removed in 3.13 but pydub (Gradio dep) needs it
+audioop-lts>=0.2.1

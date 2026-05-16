@@ -1,0 +1,51 @@
+# ============================================================
+# Capstone Project CS[03]: Advertisement Creator using Image Generation
+# ============================================================
+
+# --- Required Dependencies (install before running) ---
+pip install -r requirements.txt
+
+# --- Set API Key via environment variable (recommended) ---
+export HF_API_KEY=your_huggingface_api_key_here
+
+# Get a free HuggingFace API key at: https://huggingface.co/settings/tokens
+
+# ============================================================
+# EXECUTION EXAMPLES
+# ============================================================
+
+# Basic usage (API key via environment variable):
+python main.py --ad_text "Nike Air Max - Engineered for champions"
+
+# With visual style selection:
+python main.py --ad_text "Fresh organic coffee — every morning ritual" --style vibrant
+
+# Generate multiple variants:
+python main.py --ad_text "Samsung Galaxy S25 — Capture the moment" --num_images 3
+
+# With a custom template image:
+python main.py --ad_text "Luxury Swiss Watch — Timeless Elegance" --template ./template.png --style luxury
+
+# With a custom output directory:
+python main.py --ad_text "Pepsi — Refresh your world" --output_dir ./pepsi_ads --num_images 2
+
+# Passing API key directly via argument (not recommended for security):
+python main.py --ad_text "Apple iPhone 16" --hf_api_key hf_xxxxxxxxxxxxxxxxxx
+
+# ============================================================
+# AVAILABLE STYLE OPTIONS
+# ============================================================
+# modern | minimalist | vibrant | luxury | retro | corporate | playful | cinematic
+
+# ============================================================
+# INPUT / OUTPUT
+# ============================================================
+# Input  : --ad_text (required), --template (optional), --style, --num_images
+# Output : PNG images saved in ./output/ directory (or custom --output_dir)
+
+# ============================================================
+# FILES
+# ============================================================
+# main.py           — Entry point, CLI argument parsing, pipeline orchestration
+# prompt_builder.py — LLM 1: Qwen2.5-7B-Instruct for prompt engineering
+# ad_generator.py   — LLM 2: Stable Diffusion XL for image generation + post-processing
